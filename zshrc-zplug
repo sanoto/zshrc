@@ -3,7 +3,8 @@
 source ~/.zplug/init.zsh
 
 zplug "plugins/git",   from:oh-my-zsh
-zplug 'zplug/zplug', hook-build:'zplug --self-manage'
+zplug "zplug/zplug", hook-build:'zplug --self-manage'
+
 
 # 未インストール項目をインストールする
 if ! zplug check --verbose; then
