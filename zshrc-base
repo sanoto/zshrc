@@ -3,98 +3,47 @@
 
 export LANG=ja_JP.UTF-8
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=100000
-SAVEHIST=100000
+HISTSIZE=1000000
+SAVEHIST=1000000
 
-# some more ls aliases
-alias l='ls -opFm'
-alias la='ls -aopAFm'
-alias ll='ls -lopF'
-alias lla='ls -laopAF'
+alias しね='shutdown now'
 
-# 自動補完を有効にする
-# コマンドの引数やパス名を途中まで入力して <Tab> を押すといい感じに補完してくれる
-# 例： `cd path/to/<Tab>`, `ls -<Tab>`
 autoload -U compinit && compinit
 
-# 入力したコマンドが存在せず、かつディレクトリ名と一致するなら、ディレクトリに cd する
-# 例： /usr/bin と入力すると /usr/bin ディレクトリに移動
-setopt auto_cd
+setopt auto_cd 	            # コマンドじゃなければ cd する
+setopt auto_list            # 補完候補を一覧表示
+setopt auto_menu            # TAB で順に補完候補を切り替える
+setopt auto_param_keys      # カッコの対応などを自動的に補完
+setopt auto_param_slash     # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
+setopt list_types           # 補完候補一覧でファイルの種別をマーク表示
+setopt correct              # スペルチェック
+setopt equals               # =command を command のパス名に展開する
+setopt magic_equal_subst    # --prefix=/usr などの = 以降も補完
+setopt globdots             # 明確なドットの指定なしで.から始まるファイルをマッチ
+setopt mark_dirs            # ファイル名の展開でディレクトリにマッチした場合 末尾に / を付加
+setopt complete_in_word     # 語の途中でもカーソル位置で補完
+setopt always_last_prompt   # カーソル位置は保持したままファイル名一覧を順次その場で表示
 
-# ↑を設定すると、 .. とだけ入力したら1つ上のディレクトリに移動できるので……
-# 2つ上、3つ上にも移動できるようにする
-alias ....='cd ../..'
-alias ......='cd ../../..'
+setopt autopushd            # cd 時に自動で push
+setopt pushd_ignore_dups    # 同じディレクトリを pushd しない
+setopt hist_ignore_all_dups # 重複するコマンドが記憶されるとき、古い方を削除する。
+setopt hist_ignore_dups     # 直前と同じコマンドをヒストリに追加しない
+setopt hist_save_no_dups    # 重複するコマンドが保存されるとき、古い方を削除する。
+setopt extended_history     # zsh の開始, 終了時刻をヒストリファイルに書き込む
+setopt hist_verify          # ヒストリを呼び出してから実行する間に一旦編集
+setopt share_history        # ヒストリを共有
 
-# <Tab> でパス名の補完候補を表示したあと、
-# 続けて <Tab> を押すと候補からパス名を選択できるようになる
-# 候補を選ぶには <Tab> か Ctrl-N,B,F,P
-zstyle ':completion:*:default' menu select=1
+setopt nobeep               # ビープを鳴らさない
+setopt prompt_subst         # 色を使う
+setopt auto_resume          # サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
+setopt long_list_jobs       # 内部コマンド jobs の出力をデフォルトで jobs -l にする
+setopt print_eight_bit      # 出力時8ビットを通す
+setopt interactive_comments # コマンドラインでも # 以降をコメントと見なす
+unsetopt promptcr           # 出力の文字列末尾に改行コードが無い場合でも表示
 
-# 出力の文字列末尾に改行コードが無い場合でも表示
-unsetopt promptcr
+zstyle ':completion:*:default' menu select=1                               # 補完候補を一覧表示し、Tabや矢印で選択できるようにする
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}              # 補完候補の色づけ
+zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'    # 普通に補完→ 小文字を大文字にして補完→ 大文字を小文字にして補完
+export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}                      #ファイル補完候補に色を付ける
 
-# 色を使う
-setopt prompt_subst
-
-# ビープを鳴らさない
-#setopt nobeep
-
-# 内部コマンド jobs の出力をデフォルトで jobs -l にする
-setopt long_list_jobs
-
-# 補完候補一覧でファイルの種別をマーク表示
-setopt list_types
-
-# サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
-setopt auto_resume
-
-# 補完候補を一覧表示
-setopt auto_list
-
-# 直前と同じコマンドをヒストリに追加しない
-setopt hist_ignore_dups
-
-# cd 時に自動で push
-setopt autopushd
-
-# 同じディレクトリを pushd しない
-setopt pushd_ignore_dups
-
-# TAB で順に補完候補を切り替える
-setopt auto_menu
-
-# zsh の開始, 終了時刻をヒストリファイルに書き込む
-setopt extended_history
-
-# =command を command のパス名に展開する
-setopt equals
-
-# --prefix=/usr などの = 以降も補完
-setopt magic_equal_subst
-
-# ヒストリを呼び出してから実行する間に一旦編集
-setopt hist_verify
-
-# 出力時8ビットを通す
-setopt print_eight_bit
-
-# ヒストリを共有
-setopt share_history
-
-# 補完候補の色づけ
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
-
-# カッコの対応などを自動的に補完
-setopt auto_param_keys
-
-# ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
-setopt auto_param_slash
-
-# スペルチェック
-setopt correct
-
-# まず入力された文字そのままで補完してみて
-# それでマッチするものがなければ，小文字を大文字に変えつつ補完してみて
-# それでもマッチするものがなければ，大文字を小文字に変えるルールを追加（`+'）して補完してみよ
-zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'
