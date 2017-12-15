@@ -9,7 +9,7 @@ SAVEHIST=1000000
 alias しね='shutdown now'
 alias sine='shutdown now'
 
-autoload -U compinit && compinit
+autoload -Uz compinit && compinit
 
 setopt auto_cd 	            # コマンドじゃなければ cd する
 setopt auto_list            # 補完候補を一覧表示
