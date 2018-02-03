@@ -8,7 +8,7 @@ SAVEHIST=1000000
 
 alias しね='shutdown now'
 alias sine='shutdown now'
-alias Syu='sudo pacman -Syu'
+alias Syu='sudo pacman -Syu && yaourt -Syua'
 
 autoload -Uz compinit && compinit
 

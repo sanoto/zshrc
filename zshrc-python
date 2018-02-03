@@ -1,0 +1,9 @@
+
+#virtualenvwrapper
+if [ -f /usr/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/Documents/python
+    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    source /usr/bin/virtualenvwrapper.sh
+fi
+
