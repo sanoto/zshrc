@@ -1,16 +1,15 @@
 # 基本の設定
 # 補完とか
 
-export LANG=ja_JP.UTF-8
-HISTFILE=$HOME/.zsh-history
+autoload -Uz compinit && compinit
+
+#ヒストリ(履歴)設定
+HISTFILE=~/.zsh-history
 HISTSIZE=1000000
 SAVEHIST=1000000
 
-alias しね='shutdown now'
 alias sine='shutdown now'
 alias Syu='sudo pacman -Syu && yaourt -Syua'
-
-autoload -Uz compinit && compinit
 
 setopt auto_cd 	            # コマンドじゃなければ cd する
 setopt auto_list            # 補完候補を一覧表示
