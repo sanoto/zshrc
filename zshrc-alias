@@ -1,0 +1,3 @@
+alias sine='shutdown now'
+alias Syu='sudo pacman -Syu && yaourt -Syua'
+alias ls='ls --color=auto'
