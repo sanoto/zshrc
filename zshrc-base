@@ -1,6 +1,4 @@
 # 基本の設定
-# 補完とか
-
 autoload -Uz compinit && compinit
 
 #ヒストリ(履歴)設定
@@ -9,8 +7,6 @@ HISTSIZE=1000000
 SAVEHIST=1000000
 
 setopt auto_cd 	            # コマンドじゃなければ cd する
-setopt auto_list            # 補完候補を一覧表示
-setopt auto_menu            # TAB で順に補完候補を切り替える
 setopt auto_param_keys      # カッコの対応などを自動的に補完
 setopt auto_param_slash     # ディレクトリ名の補完で末尾の / を自動的に付加し、次の補完に備える
 setopt list_types           # 補完候補一覧でファイルの種別をマーク表示
@@ -31,13 +27,10 @@ setopt hist_verify          # ヒストリを呼び出してから実行する�
 setopt share_history        # ヒストリを共有
 
 setopt nobeep               # ビープを鳴らさない
-setopt prompt_subst         # 色を使う
 setopt auto_resume          # サスペンド中のプロセスと同じコマンド名を実行した場合はリジューム
 setopt print_eight_bit      # 出力時8ビットを通す
 setopt interactive_comments # コマンドラインでも # 以降をコメントと見なす
 unsetopt promptcr           # 出力の文字列末尾に改行コードが無い場合でも表示
 
 zstyle ':completion:*:default' menu select=1                               # 補完候補を一覧表示し、Tabや矢印で選択できるようにする
-export LS_COLORS='di=34:ln=35:so=32:pi=33:ex=31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}              # 補完候補の色づけ
 zstyle ':completion:*' matcher-list '' 'm:{a-z}={A-Z}' '+m:{A-Z}={a-z}'    # 普通に補完→ 小文字を大文字にして補完→ 大文字を小文字にして補完
