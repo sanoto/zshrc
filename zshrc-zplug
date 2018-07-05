@@ -7,7 +7,7 @@ fi
 source ~/.zplug/init.zsh
 
 zplug "zsh-users/zsh-completions"
-zplug "plugins/git",　from:oh-my-zsh
+zplug "plugins/git", from:oh-my-zsh
 zplug "peterhurford/git-aliases.zsh"
 zplug "plugins/pip", from:oh-my-zsh
 
