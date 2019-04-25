@@ -10,6 +10,7 @@ zplug "zsh-users/zsh-completions"
 zplug "plugins/git", from:oh-my-zsh
 zplug "peterhurford/git-aliases.zsh"
 zplug "plugins/pip", from:oh-my-zsh
+zplug "docker/cli", use:"contrib/completion/zsh/_docker"
 
 zplug "mollifier/anyframe"
 zplug "mollifier/cd-gitroot"
