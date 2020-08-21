@@ -1,11 +1,19 @@
-#virtualenvwrapper
+# virtualenvwrapper
+## for arch
 if [ -f /usr/bin/virtualenvwrapper.sh ]; then
     export WORKON_HOME=$HOME/.virtualenvs
     export PROJECT_HOME=$HOME/Documents/python
-    export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+    export VIRTUALENVWRAPPER_PYTHON=~/.pyenv/shims/python
     source /usr/bin/virtualenvwrapper.sh
 fi
 
+## for debian
+if [ -f /usr/local/bin/virtualenvwrapper.sh ]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/Documents/python
+    export VIRTUALENVWRAPPER_PYTHON=~/.pyenv/shims/python
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
 
 # pip zsh completion start
 function _pip_completion {
