@@ -5,6 +5,8 @@ autoload -Uz compinit && compinit
 HISTFILE=~/.zsh-history
 HISTSIZE=1000000
 SAVEHIST=1000000
+HISTTIMEFORMAT='%F %T '
+HISTIGNORE='history:pwd:ls:ls *:ll:w:top:df *'
 
 setopt auto_cd 	            # コマンドじゃなければ cd する
 setopt auto_param_keys      # カッコの対応などを自動的に補完
