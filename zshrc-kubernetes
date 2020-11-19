@@ -1,0 +1,2 @@
+[[ /usr/bin/kubectl ]] && source <(kubectl completion zsh)
+[[ /usr/bin/minikube ]] && source <(minikube completion zsh)
